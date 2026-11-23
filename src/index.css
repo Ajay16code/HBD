@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-script: 'Alex Brush', cursive;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background:
+      radial-gradient(circle at 18% 15%, rgba(37, 99, 235, 0.18), transparent 28rem),
+      radial-gradient(circle at 82% 28%, rgba(124, 58, 237, 0.16), transparent 30rem),
+      radial-gradient(circle at 50% 82%, rgba(239, 36, 76, 0.10), transparent 32rem),
+      #050509;
+    color: #f7f5ff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+/* Cinematic film grain overlay */
+.film-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Blue-purple-red vignette */
+.cinematic-vignette {
+  background: radial-gradient(circle at 50% 45%, rgba(37, 99, 235, 0.08) 0%, rgba(10, 10, 18, 0.12) 38%, rgba(5, 5, 9, 0.82) 82%, rgba(2, 2, 5, 0.96) 100%);
+}
+
+/* Animated, watermark-free cosmic backdrop for the interactive opening. */
+.cosmic-opening {
+  --pointer-x: 0;
+  --pointer-y: 0;
+  isolation: isolate;
+}
+
+.cosmic-backdrop {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(116, 55, 190, 0.28), transparent 34%),
+    linear-gradient(135deg, #03030a 0%, #12051e 48%, #050714 100%);
+}
+
+.cosmic-nebula,
+.cosmic-stars {
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.cosmic-nebula {
+  mix-blend-mode: screen;
+  filter: blur(28px);
+  opacity: 0.7;
+  transition: transform 0.18s ease-out;
+}
+
+.cosmic-nebula-one {
+  background:
+    radial-gradient(ellipse at 18% 68%, rgba(17, 91, 220, 0.58), transparent 32%),
+    radial-gradient(ellipse at 76% 32%, rgba(229, 24, 106, 0.5), transparent 30%);
+  transform: translate(calc(var(--pointer-x) * -18px), calc(var(--pointer-y) * -12px)) rotate(-8deg) scale(1.08);
+}
+
+.cosmic-nebula-two {
+  background:
+    radial-gradient(ellipse at 53% 24%, rgba(156, 42, 211, 0.58), transparent 25%),
+    radial-gradient(ellipse at 48% 82%, rgba(37, 99, 235, 0.44), transparent 27%);
+  transform: translate(calc(var(--pointer-x) * 24px), calc(var(--pointer-y) * 17px)) rotate(12deg) scale(1.12);
+  animation: nebula-drift 18s ease-in-out infinite alternate;
+}
+
+.cosmic-nebula-three {
+  background:
+    radial-gradient(ellipse at 82% 76%, rgba(235, 36, 104, 0.42), transparent 22%),
+    radial-gradient(ellipse at 20% 20%, rgba(54, 35, 177, 0.34), transparent 24%);
+  transform: translate(calc(var(--pointer-x) * -10px), calc(var(--pointer-y) * 21px)) scale(1.14);
+  animation: nebula-drift 23s ease-in-out infinite alternate-reverse;
+}
+
+.cosmic-stars {
+  opacity: 0.7;
+  background-image:
+    radial-gradient(circle at 12% 18%, #fff 0 1px, transparent 2px),
+    radial-gradient(circle at 33% 72%, rgba(214, 188, 255, 0.95) 0 1px, transparent 2px),
+    radial-gradient(circle at 61% 27%, #fff 0 1px, transparent 2px),
+    radial-gradient(circle at 81% 62%, rgba(255, 117, 200, 0.9) 0 1px, transparent 2px),
+    radial-gradient(circle at 73% 11%, rgba(127, 188, 255, 0.9) 0 1px, transparent 2px);
+  background-size: 180px 180px, 240px 240px, 310px 310px, 220px 220px, 370px 370px;
+  transform: translate(calc(var(--pointer-x) * 8px), calc(var(--pointer-y) * 8px));
+  animation: stars-drift 28s linear infinite;
+}
+
+.cosmic-photo-layer {
+  transform: translate(calc(var(--pointer-x) * -8px), calc(var(--pointer-y) * -6px)) scale(1.04);
+  transition: transform 0.22s ease-out;
+}
+
+.cosmic-vignette {
+  background: radial-gradient(circle at 50% 45%, transparent 0%, rgba(5, 5, 9, 0.1) 35%, rgba(2, 2, 5, 0.88) 100%);
+}
+
+@keyframes nebula-drift {
+  from { background-position: 0 0; }
+  to { background-position: 8% -5%; }
+}
+
+@keyframes stars-drift {
+  from { background-position: 0 0; }
+  to { background-position: 120px -80px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cosmic-nebula,
+  .cosmic-stars,
+  .cosmic-photo-layer {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Warm golden bloom glow */
+.gold-glow {
+  box-shadow: 0 0 34px -5px rgba(124, 58, 237, 0.30), 0 0 18px -4px rgba(37, 99, 235, 0.22);
+}
+
+.gold-glow-lg {
+  box-shadow: 0 0 70px -8px rgba(124, 58, 237, 0.38), 0 0 30px -5px rgba(239, 36, 76, 0.20);
+}
+
+/* Text glow */
+.text-glow {
+  text-shadow: 0 0 24px rgba(139, 92, 246, 0.38), 0 0 10px rgba(37, 99, 235, 0.22);
+}
+
+.text-gold-glow {
+  text-shadow: 0 0 28px rgba(124, 58, 237, 0.50), 0 0 12px rgba(239, 36, 76, 0.22);
+}
+
+/* Parchment / Letter texture */
+.paper-texture {
+  background-color: #110f1b;
+  background-image:
+    radial-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 0),
+    radial-gradient(rgba(239, 36, 76, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #08080a;
+}
+::-webkit-scrollbar-thumb {
+  background: #272522;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #423d33;
+}

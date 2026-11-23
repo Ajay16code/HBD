@@ -1,0 +1,6 @@
+{
+  "name": "Ammuka Ka - A Cinematic Journey",
+  "description": "A premium, emotional, cinematic birthday gift experience from Ajay to his elder sister, Ammuka Ka.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
