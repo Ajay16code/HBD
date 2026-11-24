@@ -54,23 +54,14 @@ export const Section12FinalReveal: React.FC<Section12FinalRevealProps> = ({
           className="relative max-w-xs sm:max-w-sm mx-auto cursor-pointer"
           onClick={() => onInspectPhoto('final', 'Happy Birthday', 'Ammuka Ka ❤️')}
         >
-          <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-[#100d1b] border-2 border-[#7c3aed]/45 shadow-2xl gold-glow-lg group relative">
+          <div className="rounded-2xl overflow-hidden bg-[#100d1b] border-2 border-[#7c3aed]/45 shadow-2xl gold-glow-lg relative">
             <img
               src={photoUrl}
               alt="Happy Birthday Ammuka Ka"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              loading="lazy"
+              className="block w-full h-auto max-h-[70vh] object-contain"
+              loading="eager"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-            <div className="absolute bottom-3 inset-x-3 text-center">
-              <p className="font-serif text-xl text-[#f5efe6] font-medium">
-                Ammuka Ka
-              </p>
-              <p className="text-[11px] text-[#7c3aed] tracking-widest uppercase">
-                Forever cherished
-              </p>
-            </div>
           </div>
           {/* Golden Sunset Halo */}
           <div className="absolute -inset-6 bg-[#7c3aed]/20 rounded-full blur-3xl -z-10 animate-pulse" />

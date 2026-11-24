@@ -97,7 +97,7 @@ export const Section1Opening: React.FC<Section1OpeningProps> = ({ hasStarted, on
           <img
             src={photoUrl}
             alt="Ammuka Ka"
-            className="w-full h-full object-cover object-center select-none cursor-pointer"
+            className="w-full h-full object-contain object-center select-none cursor-pointer"
             loading="eager"
             referrerPolicy="no-referrer"
             onClick={() => onInspectPhoto('hero', 'Ammuka Ka', 'Every moment with you')}

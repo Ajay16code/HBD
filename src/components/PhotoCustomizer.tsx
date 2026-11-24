@@ -9,6 +9,7 @@ import {
   resetPhotos,
   saveGalleryPhotos,
   savePhotoUrl,
+  setFinalRevealPhoto,
 } from '../services/photoStorage';
 
 export const PhotoCustomizer: React.FC = () => {
@@ -210,7 +211,7 @@ export const PhotoCustomizer: React.FC = () => {
                             className="aspect-square overflow-hidden rounded-md border border-white/10 hover:border-[#c084fc]"
                             title={photo.name}
                           >
-                            <img src={photo.dataUrl} alt={photo.name} className="h-full w-full object-cover" />
+                            <img src={photo.dataUrl} alt={photo.name} className="h-full w-full object-contain" />
                           </button>
                         ))}
                       </div>
@@ -231,7 +232,7 @@ export const PhotoCustomizer: React.FC = () => {
                             <img
                               src={currentUrl}
                               alt={def.label}
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-contain"
                             />
                           </div>
                           <div className="flex-1 min-w-0">
@@ -300,11 +301,31 @@ export const PhotoCustomizer: React.FC = () => {
           className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 p-4"
           onClick={() => setSelectedGalleryPhoto(null)}
         >
-          <img
-            src={selectedGalleryPhoto.dataUrl}
-            alt={selectedGalleryPhoto.name}
-            className="max-h-[90vh] max-w-[92vw] rounded-xl object-contain shadow-2xl"
-          />
+          <div
+            className="relative max-h-[90vh] max-w-[92vw] rounded-2xl border border-[#7c3aed]/40 bg-[#100d1b] p-3 shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <img
+              src={selectedGalleryPhoto.dataUrl}
+              alt={selectedGalleryPhoto.name}
+              className="max-h-[78vh] max-w-[88vw] rounded-xl object-contain"
+            />
+            <div className="mt-3 flex items-center justify-between gap-3">
+              <span className="max-w-[180px] truncate text-xs text-stone-300">{selectedGalleryPhoto.name}</span>
+              <button
+                type="button"
+                onClick={() => {
+                  setFinalRevealPhoto(selectedGalleryPhoto.dataUrl);
+                  setSelectedGalleryPhoto(null);
+                  setSuccessMsg('This photo is now the final reveal!');
+                  setTimeout(() => setSuccessMsg(''), 3000);
+                }}
+                className="rounded-lg bg-[#7c3aed] px-3 py-2 text-xs font-medium text-white hover:bg-[#8b5cf6]"
+              >
+                Use for Final Reveal
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </>

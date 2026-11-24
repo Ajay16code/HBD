@@ -87,7 +87,7 @@ export const Section3MemoryWorld: React.FC<Section3MemoryWorldProps> = ({ onInsp
                   <img
                     src={photoKeys[card.key] || getPhotoUrl(card.key)}
                     alt={card.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-contain transition-transform duration-700"
                     loading="lazy"
                     referrerPolicy="no-referrer"
                   />

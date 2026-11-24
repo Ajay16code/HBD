@@ -66,7 +66,7 @@ export const Section10SongWorld: React.FC<Section10SongWorldProps> = ({ onInspec
             <img
               src={portraitUrl}
               alt="Ammuka Ka"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-contain transition-transform duration-700"
               loading="lazy"
               referrerPolicy="no-referrer"
             />

@@ -55,7 +55,7 @@ export const Section5LittleMoments: React.FC<Section5LittleMomentsProps> = ({ on
             <img
               src={photoUrls.memory3 || getPhotoUrl('memory3')}
               alt="You always believed in me"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
               loading="lazy"
               referrerPolicy="no-referrer"
             />
@@ -91,7 +91,7 @@ export const Section5LittleMoments: React.FC<Section5LittleMomentsProps> = ({ on
             <img
               src={photoUrls.memory4 || getPhotoUrl('memory4')}
               alt="You make ordinary days special"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
               loading="lazy"
               referrerPolicy="no-referrer"
             />

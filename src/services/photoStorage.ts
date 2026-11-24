@@ -25,6 +25,20 @@ export interface GalleryPhoto {
   dataUrl: string;
 }
 
+let finalRevealPhotoOverride: string | null = null;
+
+export const setFinalRevealPhoto = (dataUrl: string): void => {
+  finalRevealPhotoOverride = dataUrl;
+  try {
+    localStorage.setItem('ammukaka_photo_final', dataUrl);
+  } catch (error) {
+    console.error('Could not persist the final reveal photo', error);
+  }
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new Event('ammukaka_photos_updated'));
+  }
+};
+
 const openGalleryDb = (): Promise<IDBDatabase> => new Promise((resolve, reject) => {
   const request = indexedDB.open(GALLERY_DB_NAME, 1);
   request.onupgradeneeded = () => {
@@ -36,6 +50,9 @@ const openGalleryDb = (): Promise<IDBDatabase> => new Promise((resolve, reject) 
 
 export const saveGalleryPhotos = async (photos: GalleryPhoto[]): Promise<void> => {
   if (typeof indexedDB === 'undefined') throw new Error('This browser does not support photo gallery storage.');
+  if (photos.length > 0) {
+    setFinalRevealPhoto(photos[photos.length - 1].dataUrl);
+  }
   const db = await openGalleryDb();
   await new Promise<void>((resolve, reject) => {
     const transaction = db.transaction(GALLERY_STORE_NAME, 'readwrite');
@@ -57,6 +74,9 @@ export const getGalleryPhotos = async (): Promise<GalleryPhoto[]> => {
     request.onerror = () => reject(request.error);
   });
   db.close();
+  if (photos.length > 0 && photos[photos.length - 1].dataUrl) {
+    finalRevealPhotoOverride = photos[photos.length - 1].dataUrl;
+  }
   return photos;
 };
 
@@ -70,6 +90,15 @@ export const clearGalleryPhotos = async (): Promise<void> => {
     transaction.onerror = () => reject(transaction.error);
   });
   db.close();
+  finalRevealPhotoOverride = null;
+  try {
+    localStorage.removeItem('ammukaka_photo_final');
+  } catch (error) {
+    console.error('Could not clear the final reveal photo', error);
+  }
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new Event('ammukaka_photos_updated'));
+  }
 };
 
 export const hasCustomPhoto = (): boolean => {
@@ -80,6 +109,9 @@ export const hasCustomPhoto = (): boolean => {
 export const getPhotoUrl = (key: string): string => {
   if (typeof window === 'undefined') return PHOTO_KEYS[key] || '/images/hero.jpg';
   try {
+    if (key === 'final' && finalRevealPhotoOverride) {
+      return finalRevealPhotoOverride;
+    }
     const specific = localStorage.getItem(`ammukaka_photo_${key}`);
     if (specific && specific.startsWith('data:image')) {
       return specific;
@@ -129,6 +161,7 @@ export const savePhotoUrl = (key: string, dataUrl: string): void => {
 
 export const resetPhotos = (): void => {
   try {
+    finalRevealPhotoOverride = null;
     localStorage.removeItem('ammukaka_main_photo');
     Object.keys(PHOTO_KEYS).forEach((k) => {
       localStorage.removeItem(`ammukaka_photo_${k}`);

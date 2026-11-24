@@ -82,7 +82,7 @@ export const Section8Bloopers: React.FC<Section8BloopersProps> = ({ onInspectPho
                   <img
                     src={photoUrls[item.key] || getPhotoUrl(item.key)}
                     alt={item.caption}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                     loading="lazy"
                     referrerPolicy="no-referrer"
                   />

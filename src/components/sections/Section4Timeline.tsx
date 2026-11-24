@@ -103,7 +103,7 @@ export const Section4Timeline: React.FC<Section4TimelineProps> = ({ onInspectPho
                   <img
                     src={item.photoUrl}
                     alt={item.period}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-contain transition-transform duration-700"
                     loading="lazy"
                     referrerPolicy="no-referrer"
                   />
