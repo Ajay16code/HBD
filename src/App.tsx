@@ -135,26 +135,30 @@ export default function App() {
 
       {/* Small GIPHY decorations anchored to the bottom corners */}
       <div className="pointer-events-none fixed inset-x-0 bottom-3 z-50 flex items-end justify-between px-3 sm:bottom-5 sm:px-5">
-        <iframe
-          src="https://giphy.com/embed/FQxpCWS4ZyvNFCTKHJ"
-          title="Stitch waving GIF"
-          width="120"
-          height="120"
-          frameBorder="0"
-          allowFullScreen
-          loading="lazy"
-          className="h-24 w-24 rounded-xl sm:h-32 sm:w-32"
-        />
-        <iframe
-          src="https://giphy.com/embed/ifXWIrbONpgB5B6n5m"
-          title="Happy dancing GIF"
-          width="120"
-          height="120"
-          frameBorder="0"
-          allowFullScreen
-          loading="lazy"
-          className="h-24 w-24 rounded-xl sm:h-32 sm:w-32"
-        />
+        {hasStarted && (
+          <>
+            <iframe
+              src="https://giphy.com/embed/FQxpCWS4ZyvNFCTKHJ"
+              title="Stitch waving GIF"
+              width="120"
+              height="120"
+              frameBorder="0"
+              allowFullScreen
+              loading="lazy"
+              className="h-24 w-24 rounded-xl sm:h-32 sm:w-32"
+            />
+            <iframe
+              src="https://giphy.com/embed/ifXWIrbONpgB5B6n5m"
+              title="Happy dancing GIF"
+              width="120"
+              height="120"
+              frameBorder="0"
+              allowFullScreen
+              loading="lazy"
+              className="h-24 w-24 rounded-xl sm:h-32 sm:w-32"
+            />
+          </>
+        )}
       </div>
 
       {/* 12 Cinematic Sections with slow, natural breathing space */}

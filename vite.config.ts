@@ -26,16 +26,16 @@ const uploadPlugin = (): Plugin => ({
               
               // Write to all target image files so all sections have it
               const targetFiles = [
-                'hero.jpg',
-                'ammuka-portrait.jpg',
-                'childhood.jpg',
-                'memory-1.jpg',
-                'memory-2.jpg',
-                'memory-3.jpg',
-                'memory-4.jpg',
-                'funny-1.jpg',
-                'funny-2.jpg',
-                'funny-3.jpg',
+                'hero.svg',
+                'ammuka-portrait.svg',
+                'childhood.svg',
+                'memory-1.svg',
+                'memory-2.svg',
+                'memory-3.svg',
+                'memory-4.svg',
+                'funny-1.svg',
+                'funny-2.svg',
+                'funny-3.svg',
                 'final.jpg'
               ];
 

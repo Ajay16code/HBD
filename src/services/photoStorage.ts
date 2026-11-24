@@ -2,16 +2,16 @@
 // When a main photo of Ammuka Ka is uploaded, it populates all sections
 
 const PHOTO_KEYS: Record<string, string> = {
-  hero: '/images/hero.jpg',
-  portrait: '/images/ammuka-portrait.jpg',
-  childhood: '/images/childhood.jpg',
-  memory1: '/images/memory-1.jpg',
-  memory2: '/images/memory-2.jpg',
-  memory3: '/images/memory-3.jpg',
-  memory4: '/images/memory-4.jpg',
-  funny1: '/images/funny-1.jpg',
-  funny2: '/images/funny-2.jpg',
-  funny3: '/images/funny-3.jpg',
+  hero: '/images/hero.svg',
+  portrait: '/images/ammuka-portrait.svg',
+  childhood: '/images/childhood.svg',
+  memory1: '/images/memory-1.svg',
+  memory2: '/images/memory-2.svg',
+  memory3: '/images/memory-3.svg',
+  memory4: '/images/memory-4.svg',
+  funny1: '/images/funny-1.svg',
+  funny2: '/images/funny-2.svg',
+  funny3: '/images/funny-3.svg',
   final: '/images/final.jpg',
 };
 
@@ -107,7 +107,7 @@ export const hasCustomPhoto = (): boolean => {
 };
 
 export const getPhotoUrl = (key: string): string => {
-  if (typeof window === 'undefined') return PHOTO_KEYS[key] || '/images/hero.jpg';
+  if (typeof window === 'undefined') return PHOTO_KEYS[key] || '/images/hero.svg';
   try {
     if (key === 'final' && finalRevealPhotoOverride) {
       return finalRevealPhotoOverride;
@@ -123,7 +123,7 @@ export const getPhotoUrl = (key: string): string => {
   } catch (e) {
     console.warn('Could not read photo from storage', e);
   }
-  return PHOTO_KEYS[key] || '/images/hero.jpg';
+  return PHOTO_KEYS[key] || '/images/hero.svg';
 };
 
 export const saveMainPhoto = async (dataUrl: string): Promise<boolean> => {
@@ -173,15 +173,15 @@ export const resetPhotos = (): void => {
 };
 
 export const ALL_PHOTO_DEFINITIONS = [
-  { key: 'hero', label: 'Opening Hero Portrait', path: '/public/images/hero.jpg' },
-  { key: 'portrait', label: 'Ammuka Ka Portrait', path: '/public/images/ammuka-portrait.jpg' },
-  { key: 'childhood', label: 'Childhood Memory', path: '/public/images/childhood.jpg' },
-  { key: 'memory1', label: 'Memory 1 — Adventures & Talks', path: '/public/images/memory-1.jpg' },
-  { key: 'memory2', label: 'Memory 2 — Growing Up', path: '/public/images/memory-2.jpg' },
-  { key: 'memory3', label: 'Memory 3 — Believed In Me', path: '/public/images/memory-3.jpg' },
-  { key: 'memory4', label: 'Memory 4 — Special Days', path: '/public/images/memory-4.jpg' },
-  { key: 'funny1', label: 'Blooper 1 — "Okay... this one 😂"', path: '/public/images/funny-1.jpg' },
-  { key: 'funny2', label: 'Blooper 2 — "Why were we like this?"', path: '/public/images/funny-2.jpg' },
-  { key: 'funny3', label: 'Blooper 3 — "Never deleting this"', path: '/public/images/funny-3.jpg' },
+  { key: 'hero', label: 'Opening Hero Portrait', path: '/public/images/hero.svg' },
+  { key: 'portrait', label: 'Ammuka Ka Portrait', path: '/public/images/ammuka-portrait.svg' },
+  { key: 'childhood', label: 'Childhood Memory', path: '/public/images/childhood.svg' },
+  { key: 'memory1', label: 'Memory 1 — Adventures & Talks', path: '/public/images/memory-1.svg' },
+  { key: 'memory2', label: 'Memory 2 — Growing Up', path: '/public/images/memory-2.svg' },
+  { key: 'memory3', label: 'Memory 3 — Believed In Me', path: '/public/images/memory-3.svg' },
+  { key: 'memory4', label: 'Memory 4 — Special Days', path: '/public/images/memory-4.svg' },
+  { key: 'funny1', label: 'Blooper 1 — "Okay... this one 😂"', path: '/public/images/funny-1.svg' },
+  { key: 'funny2', label: 'Blooper 2 — "Why were we like this?"', path: '/public/images/funny-2.svg' },
+  { key: 'funny3', label: 'Blooper 3 — "Never deleting this"', path: '/public/images/funny-3.svg' },
   { key: 'final', label: 'Final Reveal — Happy Birthday', path: '/public/images/final.jpg' },
 ];

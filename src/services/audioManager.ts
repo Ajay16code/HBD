@@ -25,7 +25,7 @@ class AudioManager {
     this.audio = new Audio('/audio/vathayo-punaithayo.mp3');
     this.audio.loop = true;
     this.audio.volume = 0;
-    this.audio.preload = 'auto';
+    this.audio.preload = 'metadata';
     this.audio.autoplay = true;
 
     // Handle end or errors gracefully

@@ -28,7 +28,7 @@ export const CinematicCanvas3D: React.FC<CinematicCanvas3DProps> = ({
 
     try {
       renderer = new THREE.WebGLRenderer({
-        antialias: true,
+        antialias: window.innerWidth >= 768,
         alpha: true,
         powerPreference: 'high-performance',
       });
@@ -41,7 +41,7 @@ export const CinematicCanvas3D: React.FC<CinematicCanvas3DProps> = ({
     const height = container.clientHeight || window.innerHeight;
 
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.15;
     container.appendChild(renderer.domElement);
@@ -69,7 +69,7 @@ export const CinematicCanvas3D: React.FC<CinematicCanvas3DProps> = ({
     scene.add(goldSoftLight);
 
     // Floating Blue-Purple-Red Dust Particles
-    const particleCount = window.innerWidth < 640 ? 250 : 600;
+    const particleCount = window.innerWidth < 640 ? 120 : 300;
     const particleGeometry = new THREE.BufferGeometry();
     const particlePositions = new Float32Array(particleCount * 3);
     const particleVelocities = new Float32Array(particleCount * 3);

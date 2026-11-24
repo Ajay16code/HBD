@@ -72,16 +72,16 @@ const createCinematicSvg = (title, subtitle, accentColor = '#d4af37', mood = 'wa
 };
 
 const images = [
-  { name: 'hero.jpg', title: 'Ammuka Ka', subtitle: 'The Light Of Our Lives', color: '#d4af37' },
-  { name: 'ammuka-portrait.jpg', title: 'Grace & Warmth', subtitle: 'Ammuka Ka', color: '#f59e0b' },
-  { name: 'childhood.jpg', title: 'Childhood Days', subtitle: 'So Many Small Moments', color: '#eab308' },
-  { name: 'memory-1.jpg', title: 'Adventures', subtitle: 'Random Plans & Endless Talks', color: '#f43f5e' },
-  { name: 'memory-2.jpg', title: 'Growing Up', subtitle: 'Time Went Too Fast', color: '#ec4899' },
-  { name: 'memory-3.jpg', title: 'Unconditional Care', subtitle: 'Always Believed In Me', color: '#d97706' },
-  { name: 'memory-4.jpg', title: 'Guiding Light', subtitle: 'My Pillar Of Strength', color: '#e11d48' },
-  { name: 'funny-1.jpg', title: 'Bloopers & Laughs', subtitle: 'Okay... This One 😂', color: '#f59e0b' },
-  { name: 'funny-2.jpg', title: 'Pure Chaos', subtitle: 'Why Were We Like This?', color: '#fb923c' },
-  { name: 'funny-3.jpg', title: 'Unfiltered Joy', subtitle: 'Never Deleting This', color: '#f43f5e' },
+  { name: 'hero.svg', title: 'Ammuka Ka', subtitle: 'The Light Of Our Lives', color: '#d4af37' },
+  { name: 'ammuka-portrait.svg', title: 'Grace & Warmth', subtitle: 'Ammuka Ka', color: '#f59e0b' },
+  { name: 'childhood.svg', title: 'Childhood Days', subtitle: 'So Many Small Moments', color: '#eab308' },
+  { name: 'memory-1.svg', title: 'Adventures', subtitle: 'Random Plans & Endless Talks', color: '#f43f5e' },
+  { name: 'memory-2.svg', title: 'Growing Up', subtitle: 'Time Went Too Fast', color: '#ec4899' },
+  { name: 'memory-3.svg', title: 'Unconditional Care', subtitle: 'Always Believed In Me', color: '#d97706' },
+  { name: 'memory-4.svg', title: 'Guiding Light', subtitle: 'My Pillar Of Strength', color: '#e11d48' },
+  { name: 'funny-1.svg', title: 'Bloopers & Laughs', subtitle: 'Okay... This One 😂', color: '#f59e0b' },
+  { name: 'funny-2.svg', title: 'Pure Chaos', subtitle: 'Why Were We Like This?', color: '#fb923c' },
+  { name: 'funny-3.svg', title: 'Unfiltered Joy', subtitle: 'Never Deleting This', color: '#f43f5e' },
   { name: 'final.jpg', title: 'Happy Birthday', subtitle: 'Ammuka Ka ❤️', color: '#fbbf24' }
 ];
 
