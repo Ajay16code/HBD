@@ -22,9 +22,6 @@ export const Section12FinalReveal: React.FC<Section12FinalRevealProps> = ({
 
   return (
     <section id="section-12" className="relative w-full min-h-[140vh] flex flex-col items-center justify-center py-28 px-5 z-10 overflow-hidden">
-      {/* Blue-purple-red ambient background light */}
-      <div className="absolute inset-0 bg-radial-gradient from-[#21104b]/45 via-[#100d1b]/80 to-[#050509] pointer-events-none" />
-
       <div className="relative max-w-lg w-full mx-auto text-center space-y-12 sm:space-y-14">
         {/* Birthday Title */}
         <motion.div
@@ -38,7 +35,7 @@ export const Section12FinalReveal: React.FC<Section12FinalRevealProps> = ({
             A Celebratory Moment
           </span>
           <h1 className="font-serif text-6xl sm:text-7xl md:text-8xl text-[#f4efe6] font-bold leading-none">
-            Happy Birthday
+            Happy 26th Birthday
           </h1>
           <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl text-[#7c3aed] font-black leading-none text-gold-glow">
             Ammuka Ka ❤️
@@ -93,25 +90,44 @@ export const Section12FinalReveal: React.FC<Section12FinalRevealProps> = ({
           </div>
         </motion.div>
 
-        {/* Ajay's birthday GIF */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false, amount: 0.5 }}
-          transition={{ duration: 1.2 }}
-          className="flex justify-center"
+        {/* A handwritten-style Tamil birthday wish on warm parchment */}
+        <motion.article
+          initial={{ opacity: 0, y: 25, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.35 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="parchment-letter relative mx-auto w-full max-w-xl px-8 py-12 text-center sm:px-12 sm:py-14"
+          lang="ta"
         >
-          <iframe
-            src="https://giphy.com/embed/d8ezFbSIzFQALyWqHJ"
-            title="Birthday celebration for Ajay"
-            width="240"
-            height="240"
-            frameBorder="0"
-            allowFullScreen
-            loading="lazy"
-            className="h-52 w-52 rounded-2xl sm:h-60 sm:w-60"
-          />
-        </motion.div>
+          <span className="parchment-corner parchment-corner-top-left" aria-hidden="true">❧</span>
+          <span className="parchment-corner parchment-corner-top-right" aria-hidden="true">❧</span>
+          <span className="parchment-corner parchment-corner-bottom-left" aria-hidden="true">❧</span>
+          <span className="parchment-corner parchment-corner-bottom-right" aria-hidden="true">❧</span>
+
+          <div className="relative z-10 space-y-5 font-tamil">
+            <h2 className="text-xl font-bold leading-relaxed text-[#5b351d] sm:text-2xl">
+              🌸 இனிய பிறந்தநாள் வாழ்த்துகள் அம்மு அக்கா! 🌸
+            </h2>
+            <div className="parchment-divider mx-auto" aria-hidden="true" />
+            <div className="space-y-4 text-base leading-[1.9] text-[#49331f] sm:text-lg">
+              <p>
+                மலரின் அழகு அதன் மலர்ச்சியில்,<br />
+                மனிதரின் அழகு அவரின் நற்பண்பில்!
+              </p>
+              <p>
+                உங்கள் புன்னகை என்றும் மலரட்டும்,<br />
+                உங்கள் கனவுகள் யாவும் நனவாகட்டும்!
+              </p>
+              <p>
+                அன்பும் மரியாதையும் கலந்த<br />
+                எங்கள் நல்வாழ்த்துகள் என்றும் உங்களுடன்!
+              </p>
+            </div>
+            <p className="pt-1 text-base font-bold leading-relaxed text-[#6b351d] sm:text-lg">
+              வாழ்க வளமுடன், வளர்க சிறப்புடன்! ❤️
+            </p>
+          </div>
+        </motion.article>
 
         {/* Minimal Replay Button */}
         <motion.div

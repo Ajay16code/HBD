@@ -4,7 +4,7 @@ import { Music } from 'lucide-react';
 
 export const Section9SongMoment: React.FC = () => {
   return (
-    <section id="section-9" className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center py-16 px-6 z-10 bg-radial-gradient from-[#100d1b]/40 to-transparent">
+    <section id="section-9" className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center py-16 px-6 z-10">
       <div className="max-w-lg w-full mx-auto text-center space-y-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}

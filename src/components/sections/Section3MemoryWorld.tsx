@@ -14,7 +14,6 @@ export const Section3MemoryWorld: React.FC<Section3MemoryWorldProps> = ({ onInsp
       childhood: getPhotoUrl('childhood'),
       memory1: getPhotoUrl('memory1'),
       memory2: getPhotoUrl('memory2'),
-      memory3: getPhotoUrl('memory3'),
     });
   };
 

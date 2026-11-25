@@ -41,7 +41,8 @@ export const CinematicCanvas3D: React.FC<CinematicCanvas3DProps> = ({
     const height = container.clientHeight || window.innerHeight;
 
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    const isMobile = window.innerWidth < 768;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 1.5));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.15;
     container.appendChild(renderer.domElement);
@@ -69,7 +70,7 @@ export const CinematicCanvas3D: React.FC<CinematicCanvas3DProps> = ({
     scene.add(goldSoftLight);
 
     // Floating Blue-Purple-Red Dust Particles
-    const particleCount = window.innerWidth < 640 ? 120 : 300;
+    const particleCount = window.innerWidth < 640 ? 48 : 300;
     const particleGeometry = new THREE.BufferGeometry();
     const particlePositions = new Float32Array(particleCount * 3);
     const particleVelocities = new Float32Array(particleCount * 3);
@@ -219,8 +220,11 @@ export const CinematicCanvas3D: React.FC<CinematicCanvas3DProps> = ({
     // Animation Loop
     let clock = new THREE.Clock();
 
-    const animate = () => {
+    let lastRenderTime = 0;
+    const animate = (time: number) => {
       animationFrameId = requestAnimationFrame(animate);
+      if (isMobile && time - lastRenderTime < 33) return;
+      lastRenderTime = time;
       const elapsedTime = clock.getElapsedTime();
 
       // Smooth, slow camera interpolation along the memory tunnel
@@ -259,7 +263,7 @@ export const CinematicCanvas3D: React.FC<CinematicCanvas3DProps> = ({
       renderer.render(scene, camera);
     };
 
-    animate();
+    animate(performance.now());
 
     return () => {
       cancelAnimationFrame(animationFrameId);

@@ -218,7 +218,7 @@ export const PhotoCustomizer: React.FC = () => {
                     )}
                   </div>
                   <p className="text-xs text-stone-300">
-                    Upload photos of Ammuka Ka directly here to test how they look in the 3D cinematic world. They are saved in your browser:
+                    Replace a photo for each story section below. Your changes are saved in this browser:
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                     {ALL_PHOTO_DEFINITIONS.map((def) => {

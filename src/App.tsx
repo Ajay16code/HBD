@@ -4,12 +4,10 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { CinematicCanvas3D } from './components/CinematicCanvas3D';
 import { FilmGrain } from './components/FilmGrain';
 import { AudioControl } from './components/AudioControl';
 import { PhotoModal } from './components/PhotoModal';
 import { globalAudio } from './services/audioManager';
-import { PhotoCustomizer } from './components/PhotoCustomizer';
 
 import { Section1Opening } from './components/sections/Section1Opening';
 import { Section2Intro } from './components/sections/Section2Intro';
@@ -26,7 +24,6 @@ import { Section12FinalReveal } from './components/sections/Section12FinalReveal
 
 export default function App() {
   const [hasStarted, setHasStarted] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [inspectPhoto, setInspectPhoto] = useState<{
     key: string | null;
     title: string;
@@ -43,7 +40,6 @@ export default function App() {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (scrollHeight > 0) {
         const progress = Math.max(0, Math.min(1, window.scrollY / scrollHeight));
-        setScrollProgress(progress);
         globalAudio.setProgress(progress);
       }
     };
@@ -55,11 +51,6 @@ export default function App() {
   const handleBegin = useCallback(async () => {
     setHasStarted(true);
     await globalAudio.startAudio();
-
-    // Gentle slow scroll invite
-    setTimeout(() => {
-      window.scrollBy({ top: 180, behavior: 'smooth' });
-    }, 1200);
   }, []);
 
   useEffect(() => {
@@ -108,12 +99,8 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#050509] text-[#f7f5ff] overflow-x-hidden selection:bg-[#7c3aed]/35 selection:text-white">
-      {/* 3D Cinematic Canvas background */}
-      <CinematicCanvas3D
-        scrollProgress={scrollProgress}
-        onSelectPhoto={handleInspectPhoto}
-      />
+    <div className="relative min-h-screen w-full bg-transparent text-[#f7f5ff] overflow-x-hidden selection:bg-[#7c3aed]/35 selection:text-white">
+      <div className="birthday-background pointer-events-none fixed inset-0 z-0" aria-hidden="true" />
 
       {/* Atmospheric overlays (grain, vignette, safe gradients) */}
       <FilmGrain />
@@ -123,8 +110,6 @@ export default function App() {
         started={hasStarted}
         onStartRequest={handleBegin}
       />
-      <PhotoCustomizer />
-
       {/* Photo inspection modal on tap */}
       <PhotoModal
         photoKey={inspectPhoto.key}
@@ -166,12 +151,11 @@ export default function App() {
         {/* Section 1: Cinematic Opening */}
         <Section1Opening
           hasStarted={hasStarted}
-          onBegin={handleBegin}
           onInspectPhoto={handleInspectPhoto}
         />
 
         {/* The remaining sections are unveiled after start */}
-        <div className={`transition-opacity duration-1000 ${hasStarted ? 'opacity-100' : 'opacity-20 pointer-events-none'}`}>
+        <div className="transition-opacity duration-1000">
           {/* Section 2: Introduction */}
           <Section2Intro />
 

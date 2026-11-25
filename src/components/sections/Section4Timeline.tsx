@@ -1,49 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { getPhotoUrl } from '../../services/photoStorage';
+import { Image as ImageIcon } from 'lucide-react';
 
 interface Section4TimelineProps {
   onInspectPhoto: (key: string, title: string, subtitle: string) => void;
 }
 
 export const Section4Timeline: React.FC<Section4TimelineProps> = ({ onInspectPhoto }) => {
-  const [photoUrls, setPhotoUrls] = useState<{ [key: string]: string }>({});
-
-  const update = () => {
-    setPhotoUrls({
-      childhood: getPhotoUrl('childhood'),
-      adventures: getPhotoUrl('memory1'),
-      growing: getPhotoUrl('memory2'),
-    });
-  };
-
-  useEffect(() => {
-    update();
-    window.addEventListener('ammukaka_photos_updated', update);
-    return () => window.removeEventListener('ammukaka_photos_updated', update);
-  }, []);
+  const [missingPhotos, setMissingPhotos] = useState<Record<string, boolean>>({});
 
   const timelineItems = [
     {
       period: 'CHILDHOOD',
       text: 'So many small moments.',
-      photoKey: 'childhood',
-      photoUrl: photoUrls.childhood || getPhotoUrl('childhood'),
       date: 'The golden beginning',
+      photoKey: 'timelineChildhood',
+      imageName: 'timeline-childhood.jpg',
     },
     {
       period: 'ADVENTURES',
       text: 'Random plans. Endless talks.',
-      photoKey: 'adventures',
-      photoUrl: photoUrls.adventures || getPhotoUrl('memory1'),
       date: 'Countless journeys & laughter',
+      photoKey: 'timelineAdventures',
+      imageName: 'timeline-adventures.jpg',
     },
     {
       period: 'GROWING UP',
       text: 'Somehow, time went too fast.',
-      photoKey: 'growing',
-      photoUrl: photoUrls.growing || getPhotoUrl('memory2'),
       date: 'Together through it all',
+      photoKey: 'timelineGrowingUp',
+      imageName: 'timeline-growing-up.jpg',
     },
   ];
 
@@ -94,25 +80,29 @@ export const Section4Timeline: React.FC<Section4TimelineProps> = ({ onInspectPho
                 </p>
               </div>
 
-              {/* Photo Frame */}
-              <div
+              <button
+                type="button"
+                disabled={missingPhotos[item.imageName]}
                 onClick={() => onInspectPhoto(item.photoKey, item.period, item.text)}
-                className="max-w-sm rounded-2xl overflow-hidden bg-[#100d1b] border border-[#7c3aed]/25 shadow-xl cursor-pointer group hover:border-[#7c3aed]/60 transition-all gold-glow"
+                aria-label={`View ${item.period.toLowerCase()} photo`}
+                className="block aspect-[16/10] w-full max-w-sm overflow-hidden rounded-2xl border border-[#7c3aed]/30 bg-[#100d1b] text-left shadow-xl gold-glow cursor-zoom-in disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c4b5fd]"
               >
-                <div className="aspect-[16/10] overflow-hidden relative">
-                  <img
-                    src={item.photoUrl}
-                    alt={item.period}
-                    className="w-full h-full object-contain transition-transform duration-700"
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
-                  <div className="absolute bottom-2.5 right-3 text-[11px] text-[#f4efe6]/80 flex items-center gap-1">
-                    <span>Tap to inspect</span>
+                {missingPhotos[item.imageName] ? (
+                  <div className="flex h-full flex-col items-center justify-center gap-2 px-4 text-center text-stone-300">
+                    <ImageIcon className="h-7 w-7 text-[#a78bfa]" aria-hidden="true" />
+                    <p className="text-sm">Add your photo as</p>
+                    <code className="text-xs text-[#c4b5fd]">public/images/{item.imageName}</code>
                   </div>
-                </div>
-              </div>
+                ) : (
+                  <img
+                    src={`/images/${item.imageName}`}
+                    alt={`${item.period} timeline`}
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                    onError={() => setMissingPhotos((current) => ({ ...current, [item.imageName]: true }))}
+                  />
+                )}
+              </button>
             </motion.div>
           ))}
         </div>

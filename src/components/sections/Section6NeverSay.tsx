@@ -10,10 +10,7 @@ export const Section6NeverSay: React.FC = () => {
   ];
 
   return (
-    <section id="section-6" className="relative w-full min-h-[150vh] flex flex-col items-center justify-center py-36 px-6 z-10 bg-[#050509]/90 transition-colors duration-1000">
-      {/* Dark quiet backdrop vignette */}
-      <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#080812]/60 to-[#050509] pointer-events-none" />
-
+    <section id="section-6" className="relative w-full min-h-[150vh] flex flex-col items-center justify-center py-36 px-6 z-10">
       <div className="relative max-w-lg w-full mx-auto text-center space-y-24 sm:space-y-28">
         {/* Intro */}
         <motion.div
