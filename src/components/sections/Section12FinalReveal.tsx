@@ -35,7 +35,7 @@ export const Section12FinalReveal: React.FC<Section12FinalRevealProps> = ({
             A Celebratory Moment
           </span>
           <h1 className="font-serif text-6xl sm:text-7xl md:text-8xl text-[#f4efe6] font-bold leading-none">
-            Happy 26th Birthday
+            Happy 27th Birthday
           </h1>
           <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl text-[#7c3aed] font-black leading-none text-gold-glow">
             Ammuka Ka ❤️
