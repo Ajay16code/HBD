@@ -31,7 +31,7 @@ export const Section1Opening: React.FC<Section1OpeningProps> = ({ hasStarted, on
           <span className="text-xs uppercase tracking-[0.3em] text-[#d8b8ff]">
             Etho Ennala Mudijathu Ka
           </span>
-          <h1 className="font-serif text-6xl font-black leading-[0.9] tracking-tight text-[#f4efe6] text-glow sm:text-8xl">
+          <h1 className="font-serif text-7xl font-black leading-[0.9] tracking-tight text-[#f4efe6] text-glow sm:text-8xl">
             <span className="block text-3xl font-bold leading-none text-[#e3c9ff] sm:text-4xl">For</span>
             <span className="block">Ammuka Ka</span>
           </h1>
@@ -42,7 +42,7 @@ export const Section1Opening: React.FC<Section1OpeningProps> = ({ hasStarted, on
             transition={{ duration: 0.8, delay: 0.2 }}
             onClick={() => onInspectPhoto('hero', 'Ammuka Ka', 'Every moment with you')}
             aria-label="View Ammuka Ka's portrait"
-            className="aspect-[3/4] w-40 overflow-hidden border border-[#d4af37]/70 bg-[#100d1b] p-1.5 shadow-xl sm:w-48"
+            className="aspect-[3/4] w-52 overflow-hidden border-2 border-[#d4af37]/70 bg-[#100d1b] p-1.5 shadow-xl sm:w-64"
           >
             <img
               src={photoUrl}

@@ -48,7 +48,7 @@ export const Section12FinalReveal: React.FC<Section12FinalRevealProps> = ({
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 1.6 }}
-          className="relative max-w-xs sm:max-w-sm mx-auto cursor-pointer"
+          className="relative w-[calc(100%-1rem)] max-w-[22rem] sm:max-w-[24rem] md:max-w-[30rem] mx-auto cursor-pointer"
           onClick={() => onInspectPhoto('final', 'Happy Birthday', 'Ammuka Ka ❤️')}
         >
           <div className="rounded-2xl overflow-hidden bg-[#100d1b] border-2 border-[#7c3aed]/45 shadow-2xl gold-glow-lg relative">
